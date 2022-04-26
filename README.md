@@ -41,4 +41,4 @@ _The graph generated_
 
 ![graph](./resources/graph.png)
 
-_At the resources folder there is the LaTex figure **graph.text** code generated and the **graph.png** figure
+_At the resources folder there is the LaTex figure **graph.text** code generated and the **graph.png** figure_
