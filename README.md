@@ -35,8 +35,10 @@ _Clone this repository_
 
 _Now you can edit the config.yml file for your needs or simple run as default configuration_
 
-5 - Run the script acompanhamento.R
+5 - Run the script **acompanhamento.R**
 
 _The graph generated_
 
 ![graph](./resources/graph.png)
+
+_At the resources folder there is the LaTex figure **graph.text** code generated and the **graph.png** figure
