@@ -19,6 +19,8 @@ _For more details visit_ [RASC](https://www.braziliansinrobotics.com/)
 
 _After the installation confirm the installation of the r language server_
 
+***
+
 2 - Open the R extension menu and install the packages listed below
 
 ![graph](./resources/install.png)
@@ -27,18 +29,31 @@ _After the installation confirm the installation of the r language server_
 - config
 - tikzDevice
 
-_Clone this repository_
+***
 
-3 - git clone https://github.com/Brazilian-Institute-of-Robotics/bir_tracking-project.git
+3 - Now clone this repository
 
+```bash
+git clone https://github.com/Brazilian-Institute-of-Robotics/bir_tracking-project.git
+```
+***
 4 - Enter in the repository directory
 
 _Now you can edit the config.yml file for your needs or simple run as default configuration_
 
-5 - Run the script **acompanhamento.R**
+
+***
+
+5 - Run the script **acompanhamento.R** at the terminal
+
+```bash
+Rscript acompanhamento.R
+```
+***
+    At the resources folder there is the LaTex figure graph.text code generated and the graph.png figure
 
 _The graph generated_
 
 ![graph](./resources/graph.png)
 
-_At the resources folder there is the LaTex figure **graph.text** code generated and the **graph.png** figure_
+
