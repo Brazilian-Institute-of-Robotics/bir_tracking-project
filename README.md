@@ -11,22 +11,32 @@ This repository creates a graph for project tracking.
 
 _For more details visit_ [RASC](https://www.braziliansinrobotics.com/)
 
-## Installation
+## Installation on Visual Studio Code
 
-_[Install](https://datatofish.com/install-package-r/) **R packages** (ggplot2, config and tikzDevice)_
+1 - Install R extension on VS code
 
-1 - install.packages("ggplot2")
+![graph](./resources/extension.png)
 
-2 - install.packages("config")
+_After the installation confirm the installation of the r language server_
 
-3 - install.packages("tikzDevice)
+2 - Open the R extension menu and install the packages listed below
+
+![graph](./resources/install.png)
+
+- ggplot2
+- config
+- tikzDevice
 
 _Clone this repository_
 
-4 - git clone https://github.com/Brazilian-Institute-of-Robotics/bir_tracking-project.git
+3 - git clone https://github.com/Brazilian-Institute-of-Robotics/bir_tracking-project.git
 
-5 - Enter in the repository directory and run the script acompanhamento.R
+4 - Enter in the repository directory
+
+_Now you can edit the config.yml file for your needs or simple run as default configuration_
+
+5 - Run the script acompanhamento.R
 
 _The graph generated_
 
-![graph](./graph.png)
+![graph](./resources/graph.png)
