@@ -17,6 +17,7 @@ l.realizado <- length(realizado)
 l.estimado <- length(estimado)
 
 d <- l.planejado + l.replanejado - meses - 1
+d
 plan <- c(planejado,replanejado[(1 + d) : l.replanejado])
 d2 <- l.realizado + l.estimado - meses - 1
 exec <- c(realizado,estimado[(1 + d2) : l.estimado])
@@ -52,8 +53,9 @@ a <- ggplot() +
 a <- a + xlab("Data") + ylab("Porcentagem") + labs(title="Acompanhamento do Projeto") + labs(color="Legenda") +
   scale_color_manual(values = colors) + labs(fill = "Eficiência") + scale_fill_manual(values = fills) +
   scale_x_continuous(labels = datas, breaks = 0:meses) + scale_y_continuous(breaks = seq(0,max.join+10, by=10))
-a 
+a
 
+ggsave("./resources/graph.png")
 tikz('./resources/graph.tex')
 a
 dev.off()
