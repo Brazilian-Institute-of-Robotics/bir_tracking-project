@@ -49,8 +49,9 @@ _Now you can edit the config.yml file for your needs or simple run as default co
 ```bash
 Rscript acompanhamento.R
 ```
-***
-    At the resources folder there is the LaTex figure graph.text code generated and the graph.png figure
+
+> At the resources folder there is the LaTex figure **graph.text** code generated and the **graph.png** figure
+
 
 _The graph generated_
 
