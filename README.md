@@ -51,8 +51,8 @@ Rscript acompanhamento.R
 > At the output folder there is the LaTex figure **graph.text** code generated and the **graph.png** figure
 
 
-_The graph generated_
+_You can see an example of the graph generated below_
 
-![graph](./resources/graph.png)
+![graph](./output/graph.png)
 
 

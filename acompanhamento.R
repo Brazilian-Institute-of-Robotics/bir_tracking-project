@@ -56,7 +56,7 @@ a <- a + xlab("Data") + ylab("Porcentagem") + labs(title="Acompanhamento do Proj
   theme(plot.title = element_text(hjust = 0.5))
 a
 
-ggsave("./resources/graph.png")
-tikz('./resources/graph.tex')
+ggsave("./output/graph.png")
+tikz('./output/graph.tex')
 a
 dev.off()
