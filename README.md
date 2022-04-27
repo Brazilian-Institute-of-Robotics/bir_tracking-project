@@ -13,15 +13,13 @@ _For more details visit_ [RASC](https://www.braziliansinrobotics.com/)
 
 ## Installation on Visual Studio Code
 
-1 - Install R extension on VS code
+1. Install R extension on VS code
 
 ![graph](./resources/extension.png)
 
-_After the installation confirm the installation of the r language server_
+> _After the installation confirm the installation of the r language server_
 
-***
-
-2 - Open the R extension menu and install the packages listed below
+2. Open the R extension menu and install the packages listed below
 
 ![graph](./resources/install.png)
 
@@ -29,22 +27,21 @@ _After the installation confirm the installation of the r language server_
 - config
 - tikzDevice
 
-***
 
-3 - Now clone this repository
+3. Now clone this repository
 
 ```bash
 git clone https://github.com/Brazilian-Institute-of-Robotics/bir_tracking-project.git
 ```
 ***
-4 - Enter in the repository directory
+4. Enter in the repository directory
 
 _Now you can edit the config.yml file for your needs or simple run as default configuration_
 
 
 ***
 
-5 - Run the script **acompanhamento.R** at the terminal
+5. Run the script **acompanhamento.R** at the terminal
 
 ```bash
 Rscript acompanhamento.R
