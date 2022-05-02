@@ -53,7 +53,7 @@ a <- ggplot() +
 a <- a + xlab("Data") + ylab("Porcentagem") + labs(title="Acompanhamento do Projeto") + labs(color="Legenda") +
   scale_color_manual(values = colors) + labs(fill = "Eficiencia") + scale_fill_manual(values = fills) +
   scale_x_continuous(labels = datas, breaks = 0:meses) + scale_y_continuous(breaks = seq(0,max.join+10, by=10)) +
-  theme(plot.title = element_text(hjust = 0.5))
+  theme(plot.title = element_text(hjust = 0.5)) + theme(plot.title = element_text(size=18))
 a
 
 ggsave("./output/graph.png", width = 10, height = 10)
