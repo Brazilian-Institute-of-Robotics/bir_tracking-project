@@ -15,13 +15,13 @@ _For more details visit_ [RASC](https://www.braziliansinrobotics.com/)
 
 1. Install R extension on VS code
 
-![graph](./output/extension.png)
+![graph](./source/extension.png)
 
 > _After the installation confirm the installation of the r language server_
 
 2. Open the R extension menu and install the packages listed below
 
-![graph](./output/install.png)
+![graph](./source/install.png)
 
 - ggplot2
 - config
@@ -38,7 +38,7 @@ git clone https://github.com/Brazilian-Institute-of-Robotics/bir_tracking-projec
 
 _Now you can edit the **config.yml** file for your needs or simple run as default configuration_
 
-![graph](./output/config.png)
+![graph](./source/config.png)
 
 ***
 
