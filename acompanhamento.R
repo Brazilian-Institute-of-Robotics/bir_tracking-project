@@ -40,23 +40,23 @@ df.eficiencia.realizada <- data.frame(x = 1:(l.realizado-1) , y = eficiencia.rea
 df.eficiencia.estimada <- data.frame(x = l.realizado:meses , y = eficiencia.estimada)
 
 colors <- c("Planejado" = "blue", "Replanejado" = "dodgerblue4", "Realizado" = "green","Estimado" = "seagreen4")
-fills <- c("Eficiência Realizada"="gray75","Eficiência Estimada"="gray40")
+fills <- c("Eficiencia Realizada"="gray75","Eficiencia Estimada"="gray40")
 
 a <- ggplot() +
-  geom_bar(data = df.eficiencia.realizada, aes(x = x, y = y, fill="Eficiência Realizada"),stat="identity") +
-  geom_bar(data = df.eficiencia.estimada, aes(x = x, y = y, fill="Eficiência Estimada"),stat="identity") +
+  geom_bar(data = df.eficiencia.realizada, aes(x = x, y = y, fill="Eficiencia Realizada"),stat="identity") +
+  geom_bar(data = df.eficiencia.estimada, aes(x = x, y = y, fill="Eficiencia Estimada"),stat="identity") +
   geom_line(data = df.estimado, aes(x = x, y = y, color = "Estimado"),stat="identity", size = 1.5) +
   geom_line(data = df.realizado, aes(x = x, y = y, color = "Realizado"),stat="identity", size = 1.5) +
   geom_line(data = df.planejado, aes(x = x, y = y, color = "Planejado"),stat="identity", size = 1.5) +
   geom_line(data = df.replanejado, aes(x = x, y = y, color = "Replanejado"),stat="identity", size = 1.5)
 
 a <- a + xlab("Data") + ylab("Porcentagem") + labs(title="Acompanhamento do Projeto") + labs(color="Legenda") +
-  scale_color_manual(values = colors) + labs(fill = "Eficiência") + scale_fill_manual(values = fills) +
+  scale_color_manual(values = colors) + labs(fill = "Eficiencia") + scale_fill_manual(values = fills) +
   scale_x_continuous(labels = datas, breaks = 0:meses) + scale_y_continuous(breaks = seq(0,max.join+10, by=10)) +
   theme(plot.title = element_text(hjust = 0.5))
 a
 
-ggsave("./output/graph.png")
-tikz('./output/graph.tex')
+ggsave("./output/graph.png", width = 10, height = 10)
+tikz('./output/graph.tex', width = 10, height = 10)
 a
 dev.off()
