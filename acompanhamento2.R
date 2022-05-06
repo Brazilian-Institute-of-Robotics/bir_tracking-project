@@ -22,6 +22,7 @@ config <- config::get(file = str)
 planejado <- config$planejado
 realizado <- config$realizado
 esforcos <- config$esforcos
+datas <- config$datas
 
 l.planejado <- length(planejado)
 l.realizado <- length(realizado)
@@ -44,16 +45,21 @@ estimado <- estimado + concluido
 
 x.planejado <- 0 : (l.planejado - 1)
 x.realizado <- 0 : (l.realizado - 1)
-x.estimado <- l.realizado : (l.planejado - 1)
+x.estimado <- (l.realizado - 1) : (l.planejado - 1)
+x.estimado2 <- (l.realizado) : (l.planejado - 1)
 
-eficiencia.realizada <- realizado * 100/ planejado[0 : (l.realizado)]
+eficiencia.realizada <- realizado[2 : l.realizado] * 100/ planejado[2 : (l.realizado)]
 eficiencia.estimada <- estimado * 100/ planejado[(l.realizado + 1) :l.planejado]
+
+x.eficiencia.realizada <- 1 : (l.realizado - 1)
+
+estimado <- c(concluido,estimado)
 
 df.planejado <- data.frame(x = x.planejado, y = planejado)
 df.realizado <- data.frame(x = x.realizado, y = realizado)
 df.estimado <- data.frame(x = x.estimado, y = estimado)
-df.eficiencia.realizada <- data.frame(x = x.realizado , y = eficiencia.realizada)
-df.eficiencia.estimada <- data.frame(x = x.estimado , y = eficiencia.estimada)
+df.eficiencia.realizada <- data.frame(x = x.eficiencia.realizada , y = eficiencia.realizada)
+df.eficiencia.estimada <- data.frame(x = x.estimado2 , y = eficiencia.estimada)
 
 colors <- c("Planejado" = "blue", "Realizado" = "green","Estimado" = "seagreen4")
 fills <- c("Eficiencia Realizada"="gray40","Eficiencia Estimada"="gray75")
@@ -66,7 +72,8 @@ a <- ggplot() +
   geom_line(data = df.planejado, aes(x = x, y = y, color = "Planejado"),stat="identity", size = 1.5) +
     xlab("Data") + ylab("Porcentagem") + labs(title="Acompanhamento do Projeto") + labs(color="Legenda") +
   scale_color_manual(values = colors) + theme(plot.title = element_text(size=18)) +
-  theme(plot.title = element_text(hjust = 0.5)) + labs(fill = "Eficiencia") + scale_fill_manual(values = fills)
+  theme(plot.title = element_text(hjust = 0.5)) + labs(fill = "Eficiencia") + scale_fill_manual(values = fills) +
+  scale_x_continuous(labels = datas, breaks = 0:(l.planejado - 1)) 
 a
 
 #a <- a + xlab("Data") + ylab("Porcentagem") + labs(title="Acompanhamento do Projeto") + labs(color="Legenda") +
@@ -75,7 +82,7 @@ a
 #  theme(plot.title = element_text(hjust = 0.5)) + theme(plot.title = element_text(size=18))
 # a
 
-#ggsave("./output/graph.png", width = 10, height = 10)
-# tikz('./output/graph.tex', width = 10, height = 10)
-#a
-#dev.off()
+ggsave("./output/graph.png", width = 10, height = 10)
+tikz('./output/graph.tex', width = 10, height = 10)
+a
+dev.off()
