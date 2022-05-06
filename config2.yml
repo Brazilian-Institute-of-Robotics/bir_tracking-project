@@ -1,0 +1,14 @@
+---
+default:
+  meses: 7
+  planejado: [0, 27, 41, 73, 95, 100]
+  x.planejado: [0, 1, 2, 3, 4, 5]
+  replanejado: [78, 82, 95, 100] 
+  x.replanejado: [4, 5, 6, 7]
+  realizado: [0, 27, 48, 62, 78, 83]
+  x.realizado: [0, 1, 2, 3, 4, 5]  
+  estimado: [78, 84, 95, 100]  
+  x.estimado: [4, 5, 6, 7]
+  datas: [01/01,01/01,01/01,01/01,01/01,01/01,01/01,01/01] 
+...
+

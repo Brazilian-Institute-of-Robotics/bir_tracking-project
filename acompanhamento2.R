@@ -2,60 +2,73 @@ library(config)
 library(ggplot2)
 library(tikzDevice)
 
-config <- config::get()
+# BUSCA DO ARQUIVO DE CONFIGURAÇÃO MAIS ATUAL
+str1 = "config"
+str3 = ".yml"
+for (i in 1:10) {
+  str2.try = i
+  str.try = paste(str1,str2.try,str3,sep="")
+  if (file.exists(str.try)) {
+    str = str.try
+    cat(str)
+  }
+#  else {
+#    break
+#  }
+}
 
-meses <- config$meses
+config <- config::get(file = str)
+
 planejado <- config$planejado
-x.planejado <- config$x.planejado
-replanejado <- config$replanejado
-x.replanejado <- config$x.replanejado
 realizado <- config$realizado
-x.realizado <- config$x.realizado
-estimado <- config$estimado
-x.estimado <- config$x.estimado
-datas <- config$datas
+esforcos <- config$esforcos
 
-# l.planejado <- length(planejado)
-#l.replanejado <- length(replanejado)
-#l.realizado <- length(realizado)
-#l.estimado <- length(estimado)
+l.planejado <- length(planejado)
+l.realizado <- length(realizado)
+l.esforcos <- length(esforcos)
 
-#d <- l.planejado + l.replanejado - meses - 1
-#d
-#plan <- c(planejado,replanejado[(1 + d) : l.replanejado])
-#d2 <- l.realizado + l.estimado - meses - 1
-#exec <- c(realizado,estimado[(1 + d2) : l.estimado])
-#eficiencias <- exec * 100 / plan
-#eficiencia.realizada <- eficiencias[2:l.realizado]
-#eficiencia.estimada <- eficiencias[(l.realizado + 1):(meses+1)]
-#join <- c(eficiencias,planejado,replanejado,realizado,estimado)
-#max.join <- max(join[2:length(join)])
+if (sum(esforcos) != 1) {
+  cat("MENSAGEM DE ERRO: A SOMA DO VETOR DE esforcos DEVE SER IGUAL A 1")
+}
 
-#x.planejado <- 0 : (l.planejado - 1)
-#x.replanejado <- (meses - l.replanejado + 1) : meses
-#x.realizado <- 0 : (l.realizado - 1)
-#x.estimado <- (meses - l.estimado + 1)  : meses
+if (l.realizado + l.esforcos != l.planejado) {
+  cat("MENSAGEM DE ERRO: A SOMA DO TAMANHO VETOR realizado COM O VETOR esforcos DEVE SER IGUAL AO TAMANHO DO
+      VETOR planejado. RECONFIGURE O ARQUIVO config.yml")
+}
+
+concluido <- tail(realizado, n = 1)
+falta <- 100 - concluido
+estimado <- esforcos * falta
+estimado <- cumsum(estimado)
+estimado <- estimado + concluido
+
+x.planejado <- 0 : (l.planejado - 1)
+x.realizado <- 0 : (l.realizado - 1)
+x.estimado <- l.realizado : (l.planejado - 1)
+
+eficiencia.realizada <- realizado * 100/ planejado[0 : (l.realizado)]
+eficiencia.estimada <- estimado * 100/ planejado[(l.realizado + 1) :l.planejado]
 
 df.planejado <- data.frame(x = x.planejado, y = planejado)
-df.replanejado <- data.frame(x = x.replanejado, y = replanejado)
 df.realizado <- data.frame(x = x.realizado, y = realizado)
 df.estimado <- data.frame(x = x.estimado, y = estimado)
-df.eficiencia.realizada <- data.frame(x = 1:(l.realizado-1) , y = eficiencia.realizada)
-df.eficiencia.estimada <- data.frame(x = l.realizado:meses , y = eficiencia.estimada)
+df.eficiencia.realizada <- data.frame(x = x.realizado , y = eficiencia.realizada)
+df.eficiencia.estimada <- data.frame(x = x.estimado , y = eficiencia.estimada)
 
-colors <- c("Planejado" = "blue", "Replanejado" = "dodgerblue4", "Realizado" = "green","Estimado" = "seagreen4")
-# fills <- c("Eficiencia Realizada"="gray75","Eficiencia Estimada"="gray40")
+colors <- c("Planejado" = "blue", "Realizado" = "green","Estimado" = "seagreen4")
+fills <- c("Eficiencia Realizada"="gray40","Eficiencia Estimada"="gray75")
 
 a <- ggplot() +
+  geom_bar(data = df.eficiencia.realizada, aes(x = x, y = y, fill="Eficiencia Realizada"),stat="identity") +
+  geom_bar(data = df.eficiencia.estimada, aes(x = x, y = y, fill="Eficiencia Estimada"),stat="identity") +
   geom_line(data = df.estimado, aes(x = x, y = y, color = "Estimado"),stat="identity", size = 1.5) +
   geom_line(data = df.realizado, aes(x = x, y = y, color = "Realizado"),stat="identity", size = 1.5) +
   geom_line(data = df.planejado, aes(x = x, y = y, color = "Planejado"),stat="identity", size = 1.5) +
-  geom_line(data = df.replanejado, aes(x = x, y = y, color = "Replanejado"),stat="identity", size = 1.5) +
-  xlab("Data") + ylab("Porcentagem") + labs(title="Acompanhamento do Projeto") + labs(color="Legenda") +
+    xlab("Data") + ylab("Porcentagem") + labs(title="Acompanhamento do Projeto") + labs(color="Legenda") +
   scale_color_manual(values = colors) + theme(plot.title = element_text(size=18)) +
-  theme(plot.title = element_text(hjust = 0.5))
-  
+  theme(plot.title = element_text(hjust = 0.5)) + labs(fill = "Eficiencia") + scale_fill_manual(values = fills)
 a
+
 #a <- a + xlab("Data") + ylab("Porcentagem") + labs(title="Acompanhamento do Projeto") + labs(color="Legenda") +
 #  scale_color_manual(values = colors) + labs(fill = "Eficiencia") + scale_fill_manual(values = fills) +
 #  scale_x_continuous(labels = datas, breaks = 0:meses)  +
