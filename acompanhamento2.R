@@ -99,6 +99,8 @@ a <- ggplot() +
   theme(plot.title = element_text(hjust = 0.5)) + labs(fill = "Eficiencia") + scale_fill_manual(values = fills) +
   scale_x_continuous(labels = datas, breaks = 0:(l.planejado - 1)) 
 a
+#todo eu sugiro inserir o nome do projeto no título do gráfico
+#todo a geração do pdf está acontecendo na raiz do repositório, o certo é no folder **output**
 
 # Save image plot (PNG)
 ggsave("./output/graph.png", width = 10, height = 10)

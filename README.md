@@ -47,6 +47,8 @@ _Now you can edit the **config.yml** file for your needs or simple run as defaul
 ```bash
 Rscript acompanhamento.R
 ```
+#todo quando rodou apresentou msg: The following objects are masked fro 'package:bas': get, merge. Precisa ser investigado.
+
 
 > At the output folder there is the LaTex figure **graph.text** code generated and the **graph.png** figure
 
