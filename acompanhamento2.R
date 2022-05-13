@@ -44,18 +44,22 @@ name <- config$name
 l.planejado <- length(planejado)
 l.realizado <- length(realizado)
 l.esforcos <- length(esforcos)
+l.datas <- length(datas)
 
 # Generate error config messages
 if (sum(esforcos) != 1) {
   cat("MENSAGEM DE ERRO: A SOMA DO VETOR DE esforcos DEVE SER IGUAL A 1")
-  # quit()
+  quit()
 }
 if (l.realizado + l.esforcos != l.planejado) {
   cat("MENSAGEM DE ERRO: A SOMA DO TAMANHO VETOR realizado COM O VETOR esforcos DEVE SER IGUAL AO TAMANHO DO
       VETOR planejado. RECONFIGURE O ARQUIVO config.yml")
-  # quit()
+  quit()
 }
-#TODO adicionar mensagem de erro para tamanho do vetor DATA
+if (l.planejado != l.datas) {
+  cat("MENSAGEM DE ERRO: O TAMANHO DO VETOR datas TEM QUE SER IGUAL AO TAMNHO DO VETOR planejado. RECONFIGURE O ARQUIVO config.yml")
+  quit()
+}
 
 # Construct estimated vector
 concluido <- tail(realizado, n = 1)
@@ -111,3 +115,4 @@ ggsave("./output/graph.png", width = 10, height = 10)
 tikz('./output/graph.tex', width = 10, height = 10)
 a
 dev.off()
+
