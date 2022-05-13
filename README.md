@@ -15,13 +15,13 @@ _For more details visit_ [RASC](https://www.braziliansinrobotics.com/)
 
 1. Install R extension on VS code
 
-![graph](./source/extension.png)
+![graph](./source/install.png)
 
 > _After the installation confirm the installation of the r language server_
 
 2. Open the R extension menu and install the packages listed below
 
-![graph](./source/install.png)
+![graph](./source/extension.png)
 
 - ggplot2
 - config
