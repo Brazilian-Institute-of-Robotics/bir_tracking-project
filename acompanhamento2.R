@@ -38,6 +38,7 @@ planejado <- config$planejado
 realizado <- config$realizado
 esforcos <- config$esforcos
 datas <- config$datas
+name <- config$name
 
 # Get vectors lenght
 l.planejado <- length(planejado)
@@ -97,7 +98,7 @@ a <- ggplot() +
   geom_line(data = df.estimado, aes(x = x, y = y, color = "Estimado"),stat="identity", size = 1.5) +
   geom_line(data = df.realizado, aes(x = x, y = y, color = "Realizado"),stat="identity", size = 1.5) +
   geom_line(data = df.planejado, aes(x = x, y = y, color = "Planejado"),stat="identity", size = 1.5) +
-    xlab("Data") + ylab("Porcentagem") + labs(title="Acompanhamento do Projeto") + labs(color="Legenda") +
+    xlab("Data") + ylab("Porcentagem") + labs(title=name) + labs(color="Legenda") +
   scale_color_manual(values = colors) + theme(plot.title = element_text(size=18)) +
   theme(plot.title = element_text(hjust = 0.5)) + labs(fill = "Eficiencia") + scale_fill_manual(values = fills) +
   scale_x_continuous(labels = datas, breaks = 0:(l.planejado - 1)) 
