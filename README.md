@@ -40,6 +40,11 @@ _Now you can edit the **config.yml** file for your needs, create as many configu
 
 > If you create more configuration files, keep the name pattern (config2.yml, config3.yml ... confign.yml), the program will catch the last config file
 
+**Constraints**
+- The lenght of the "planejado" vector has to be equal to the sum of the lenghts of "realizado" vector and "esforocos" vector.
+- The sum of the vector elements of "esforco" vector has to be equal 1.
+- The lenght of "datas" vector has to be equal to the lenght of the "planejado" vector.
+
 ![graph](./source/config.png)
 
 ***
