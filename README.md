@@ -36,7 +36,9 @@ git clone https://github.com/Brazilian-Institute-of-Robotics/bir_tracking-projec
 ***
 4. Enter in the repository directory
 
-_Now you can edit the **config.yml** file for your needs or simple run as default configuration_
+_Now you can edit the **config.yml** file for your needs, create as many configuration files as you need, or simple run as default configuration_
+
+> If you create more configuration files, keep the name pattern (config2.yml, config3.yml ... confign.yml), the program will catch the last config file
 
 ![graph](./source/config.png)
 
