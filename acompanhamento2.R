@@ -1,4 +1,4 @@
-library(config)
+library(config, warn.conflicts = FALSE)
 library(ggplot2)
 library(tikzDevice)
 
