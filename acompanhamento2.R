@@ -2,6 +2,9 @@ library(config)
 library(ggplot2)
 library(tikzDevice)
 
+# Generate a .pdf of the graph
+pdf(file="./output/Rplots.pdf")
+
 # Search the most recent config file
 files = list.files("./")
 max = 0
@@ -100,7 +103,6 @@ a <- ggplot() +
   scale_x_continuous(labels = datas, breaks = 0:(l.planejado - 1)) 
 a
 #todo eu sugiro inserir o nome do projeto no título do gráfico
-#todo a geração do pdf está acontecendo na raiz do repositório, o certo é no folder **output**
 
 # Save image plot (PNG)
 ggsave("./output/graph.png", width = 10, height = 10)

@@ -55,6 +55,6 @@ Rscript acompanhamento.R
 
 _You can see an example of the graph generated below_
 
-![graph](./output/graph.png)
+![graph](./source/graph.png)
 
 
