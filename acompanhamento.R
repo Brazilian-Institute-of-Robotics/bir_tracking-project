@@ -63,7 +63,7 @@ if (l.planejado != l.datas) {
 
 # Construct estimated vector
 concluido <- tail(realizado, n = 1)
-falta <- 50 - concluido
+falta <- planejado[length(planejado)]   - concluido
 estimado <- esforcos * falta
 estimado <- cumsum(estimado)
 estimado <- estimado + concluido
